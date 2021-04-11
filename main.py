@@ -6,11 +6,11 @@ root = tk.Tk()
 
 root.title("Currency Conversion")
 
-Tops = Frame(root,bg = '#663300',pady = 2, width =1850, height = 100, relief = "ridge")
-Tops.grid(row=0,column=0)
+Tops = Frame(root,bg = '#663300',pady = 2, relief = "ridge")
+Tops.grid(row=0,column=0,columnspan=2)
 
-headlabel = tk.Label(Tops,font=('lato black', 19,'bold'), text = '      Pypower Project   :    Currency Converter  ', bg= '#663300',fg='white') 
-headlabel.grid(row=1, column=0,sticky=W)
+headlabel = tk.Label(Tops,font=('lato black', 19,'bold'), text = 'Currency Converter', bg= 'coral',fg='white',borderwidth=2, relief="groove") 
+headlabel.grid(row=1, column=0,columnspan=2)
  
 variable1 = tk.StringVar(root) 
 variable2 = tk.StringVar(root) 
@@ -44,60 +44,36 @@ def clear_all() :
 CurrenyCode_list = ["INR", "USD", "CAD", "CNY", "DKK", "EUR"]
 
 
-root.configure(background = '#e6e5e5') 
-root.geometry("700x400") 
+root.configure(background = '') 
 
-Label_1 =Label(root, font=('lato black', 27,'bold'), text="",padx=2,pady=2, bg="#e6e5e5",fg ="black")
-Label_1.grid(row=1, column=0,sticky=W)
+label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "Amount  :  ", bg="#e6e5e5",fg = "black",justify="right") 
+label1.grid(row=2, column=0)
 
+label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "From Currency  :  ", bg="#e6e5e5",fg = "black",justify="right") 
+label1.grid(row=3, column=0)
 
-label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "\t    Amount  :  ", bg="#e6e5e5",fg = "black") 
-label1.grid(row=2, column=0,sticky=W)
+label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "To Currency  :  ", bg="#e6e5e5",fg = "black",justify="right") 
+label1.grid(row=4, column=0)
 
-label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "\t    From Currency  :  ", bg="#e6e5e5",fg = "black") 
-label1.grid(row=3, column=0,sticky=W)
-
-label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "\t    To Currency  :  ", bg="#e6e5e5",fg = "black") 
-label1.grid(row=4, column=0,sticky=W)
-
-label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "\t    Converted Amount  :  ", bg="#e6e5e5",fg = "black") 
-label1.grid(row=8, column=0,sticky=W)
-
-
-Label_1 =Label(root, font=('lato black', 7,'bold'), text="",padx=2,pady=2, bg="#e6e5e5",fg ="black")
-Label_1.grid(row=5, column=0,sticky=W)
-
-Label_1 =Label(root, font=('lato black', 7,'bold'), text="",padx=2,pady=2, bg="#e6e5e5",fg ="black")
-Label_1.grid(row=7, column=0,sticky=W)
-
-
+label1 = tk.Label(root,font=('lato black', 15,'bold'), text = "Converted Amount  :  ", bg="#e6e5e5",fg = "black",justify="right") 
+label1.grid(row=8, column=0)
 
 FromCurrency_option = tk.OptionMenu(root, variable1, *CurrenyCode_list) 
 ToCurrency_option = tk.OptionMenu(root, variable2, *CurrenyCode_list) 
 
-FromCurrency_option.grid(row = 3, column = 0, ipadx = 45,sticky=E) 
-ToCurrency_option.grid(row = 4, column = 0, ipadx = 45,sticky=E) 
-
-
-
+FromCurrency_option.grid(row = 3, column = 1, padx = 5) 
+ToCurrency_option.grid(row = 4, column = 1, padx = 5) 
 
 Amount1_field = tk.Entry(root) 
-Amount1_field.grid(row=2,column=0,ipadx =28,sticky=E)
+Amount1_field.grid(row=2,column=1,padx=5)
 
 Amount2_field = tk.Entry(root)
-Amount2_field.grid(row=8,column=0,ipadx =31,sticky=E) 
+Amount2_field.grid(row=8,column=1,padx=5) 
 
+Label_9 =Button(root, font=('arial', 15,'bold'), text="   Convert  ",padx=2,pady=2, bg="blue",fg = "white",command=RealTimeCurrencyConversion,activebackground="coral")
+Label_9.grid(row=6, column=0,columnspan=2)
 
-
-
-Label_9 =Button(root, font=('arial', 15,'bold'), text="   Convert  ",padx=2,pady=2, bg="blue",fg = "white",command=RealTimeCurrencyConversion)
-Label_9.grid(row=6, column=0)
-
-Label_1 =Label(root, font=('lato black', 7,'bold'), text="",padx=2,pady=2, bg="#e6e5e5",fg ="black")
-Label_1.grid(row=9, column=0,sticky=W)
-
-Label_9 =Button(root, font=('arial', 15,'bold'), text="   Clear All  ",padx=2,pady=2, bg="white",fg = "red",command=clear_all)
-Label_9.grid(row=10, column=0)
-
+Label_9 =Button(root, font=('arial', 15,'bold'), text="   Clear All  ",padx=2,pady=2, bg="white",fg = "red",command=clear_all,activebackground="red",activeforeground="white")
+Label_9.grid(row=10, column=0,columnspan=2,pady=5)
 
 root.mainloop()
